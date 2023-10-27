@@ -52,6 +52,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pertemuan5.Data.DataForm
 import com.example.pertemuan5.Data.DataSource.jenis
+import com.example.pertemuan5.Data.DataSource.statuss
 import com.example.pertemuan5.R
 import com.example.pertemuan5.ui.theme.CobaViewModel
 import com.example.pertemuan5.ui.theme.Pertemuan5Theme
@@ -176,9 +177,9 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()) {
     SelectJK(
         options = jenis.map { id -> context.resources.getString(id) },
         onSelectChanged = { cobaViewModel.setJenisK(it) })
-    )
+
     Selectstatus(
-        options = sta.map { id -> context.resources.getString(id) },
+        options = statuss.map { id -> context.resources.getString(id) },
         onSelectChanged = { cobaViewModel.setJenisK(it) })
     OutlinedTextField(
         value = textAlamat,
@@ -207,9 +208,10 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()) {
     TextHasil(
         namanya = cobaViewModel.namaUsr,
         telponnya = cobaViewModel.noTlp,
-        alamatnya = cobaViewModel.alamatUsr,
+        Emailnya = cobaViewModel.Email,
         jenisnya = cobaViewModel.jenisKl,
-        Emailnya = cobaViewModel.Email
+        statusnya = cobaViewModel.stts,
+        alamatnya = cobaViewModel.alamatUsr
     )
 }
 
@@ -276,7 +278,8 @@ fun Selectstatus(
     }
 }
 @Composable
-fun TextHasil(namanya: String, telponnya: String, alamatnya: String, jenisnya: String, Emailnya:String){
+fun TextHasil(namanya: String, telponnya: String, alamatnya: String, jenisnya: String,
+              statusnya: String, Emailnya:String){
     ElevatedCard (
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
@@ -306,6 +309,11 @@ fun TextHasil(namanya: String, telponnya: String, alamatnya: String, jenisnya: S
         )
         Text(
             text = "Jenis : " + jenisnya,
+            modifier = Modifier
+                .padding(horizontal = 10.dp, vertical = 5.dp)
+        )
+        Text(
+            text = "Status : " + statusnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp)
         )
