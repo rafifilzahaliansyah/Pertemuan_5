@@ -127,7 +127,7 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()) {
                     .size(20.dp)
             )
             Text(
-                text = "Regist",
+                text = "Register",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(13.dp)
@@ -196,7 +196,8 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()) {
     Button(
         modifier = Modifier.fillMaxWidth(),
         onClick = {
-            cobaViewModel.insertData(textNama, textTlp, textAlamat,textEmail,dataForm.sex)
+            cobaViewModel.insertData(textNama, textTlp, textAlamat,textEmail,
+                dataForm.sex, dataForm.stattus)
         }
     ) {
         Text(
@@ -303,17 +304,17 @@ fun TextHasil(namanya: String, telponnya: String, alamatnya: String, jenisnya: S
                 .padding(horizontal = 10.dp, vertical = 5.dp)
         )
         Text(
-            text = "Alamat : " + alamatnya,
-            modifier = Modifier
-                .padding(horizontal = 10.dp, vertical = 5.dp)
-        )
-        Text(
             text = "Jenis : " + jenisnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp)
         )
         Text(
             text = "Status : " + statusnya,
+            modifier = Modifier
+                .padding(horizontal = 10.dp, vertical = 5.dp)
+        )
+        Text(
+            text = "Alamat : " + alamatnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp)
         )
