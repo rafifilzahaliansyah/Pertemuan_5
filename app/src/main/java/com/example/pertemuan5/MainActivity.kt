@@ -132,7 +132,11 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()) {
             )
         }
     }
-
+    Text(
+        text = "Create Your Account",
+        fontSize = 40.sp,
+        fontWeight = FontWeight.Bold
+    )
     OutlinedTextField(
         value = textNama,
         singleLine = true,
