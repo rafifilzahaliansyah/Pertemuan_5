@@ -1,5 +1,6 @@
 package com.example.viewmodel
 
+import android.net.http.UrlRequest.Status
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Email
 import androidx.activity.ComponentActivity
@@ -175,6 +176,10 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()) {
     SelectJK(
         options = jenis.map { id -> context.resources.getString(id) },
         onSelectChanged = { cobaViewModel.setJenisK(it) })
+    )
+    Selectstatus(
+        options = sta.map { id -> context.resources.getString(id) },
+        onSelectChanged = { cobaViewModel.setJenisK(it) })
     OutlinedTextField(
         value = textAlamat,
         singleLine = true,
@@ -239,7 +244,37 @@ fun SelectJK(
         }
     }
 }
+@Composable
+fun Selectstatus(
+    options: List<String>,
+    onSelectChanged: (String) -> Unit = {}
+) {
+    var selectedValue by rememberSaveable { mutableStateOf("") }
 
+    Column (modifier = Modifier.padding(16.dp)) {
+        options.forEach { item ->
+            Row (
+                modifier = Modifier.selectable(
+                    selected = selectedValue == item,
+                    onClick = {
+                        selectedValue = item
+                        onSelectChanged(item)
+                    }
+                ),
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                RadioButton(
+                    selected = selectedValue == item,
+                    onClick = {
+                        selectedValue = item
+                        onSelectChanged(item)
+                    }
+                )
+                Text(item)
+            }
+        }
+    }
+}
 @Composable
 fun TextHasil(namanya: String, telponnya: String, alamatnya: String, jenisnya: String, Emailnya:String){
     ElevatedCard (
