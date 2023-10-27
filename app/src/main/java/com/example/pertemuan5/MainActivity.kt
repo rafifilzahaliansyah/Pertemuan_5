@@ -114,7 +114,6 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()) {
             .background(color = Color.Cyan)
             .fillMaxWidth(),
 
-
         ) {
         Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
